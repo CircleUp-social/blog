@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern CircleUp Blog</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div id="loading-screen" class="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <header>
+        <h1>Welcome to the Modern CircleUp Blog</h1>
+        <input type="text" id="search-bar" placeholder="Search here...">
+    </header>
+
+    <main id="content">
+        <p>This is a sample modern blog with animations and interactive features.</p>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const loadingScreen = document.getElementById('loading-screen');
+            const searchBar = document.getElementById('search-bar');
+
+            // Hide loading screen after content loads
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 1000);
+
+            // Handle search bar input
+            searchBar.addEventListener('input', (event) => {
+                const query = event.target.value;
+                if (query) {
+                    const newUrl = `${window.location.origin}${window.location.pathname}?search=${encodeURIComponent(query)}`;
+                    window.history.pushState({ path: newUrl }, '', newUrl);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
